@@ -4,14 +4,13 @@
   grid-template-rows: auto;
   margin: 47.25px auto 0 auto;
   max-width: 880px;
-  justify-content: center;
+  justify-items: center;
   gap: 20px 17px;
 }
 
 @media (max-width: 900px) {
   .elements {
     grid-template-columns: repeat(2, 1fr);
-    justify-items: center;
     margin: 47.25px 50px 0 50px;
   }
 }
@@ -20,7 +19,6 @@
   .elements {
     grid-template-columns: repeat(1, 1fr);
     margin: 20px auto 19px auto;
-    justify-items: center;
   }
 }
 

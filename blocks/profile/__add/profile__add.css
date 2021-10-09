@@ -22,6 +22,7 @@
 @media (max-width: 766px) {
   .profile__add {
     width: 282px;
-    margin: 36px auto 0 auto;
+    margin: 33px auto 0 auto;
+    background-size: 16px 16px;
   }
 }

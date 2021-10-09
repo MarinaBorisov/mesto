@@ -1,5 +1,5 @@
-.popup__name {
-  border-bottom: 1px solid #D6D6D6;
+.popup__field {
+  border-bottom: 1px solid rgb(0, 0, 0, 0.2);
   border-top: none;
   border-left: none;
   border-right: none;
@@ -10,9 +10,8 @@
   padding-bottom: 6px;
 }
 
-
 @media (max-width: 766px) {
-  .popup__name {
+  .popup__field {
     margin-left: 22px;
     margin-right: 22px;
   }

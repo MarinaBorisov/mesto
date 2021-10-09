@@ -5,9 +5,11 @@
   color: #fff;
   border: none;
   border-radius: 2px;
-  margin: 0 auto;
+  margin: 22px auto;
   margin-bottom: 37px;
   transition: opacity 0.3s;
+  font-size: 18px;
+  line-height: 21,78px;
 }
 
 .popup__button-save:hover {

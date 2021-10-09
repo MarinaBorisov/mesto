@@ -15,70 +15,70 @@
       <img class="profile__avatar" src="./images/avatar.jpg" alt="Фото профиля">
       <div class="profile__info">
         <h1 class="profile__title">Жак-Ив Кусто</h1>
-        <button class="profile__edit"></button>
+        <button type="button" class="profile__edit"></button>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
       <button type="button" class="profile__add"></button>
     </section>
     <section class="elements">
-      <div class="elements__element">
+      <article class="elements__element">
         <img class="elements__img" src="./images/karachaevsk.jpg" alt="Карачаевск">
         <div class="elements__description">
           <h2 class="elements__title">Карачаевск</h2>
-          <button class="elements__like"></button>
+          <button type="button" class="elements__like"></button>
         </div>
-      </div>
-      <div class="elements__element">
+      </article>
+      <article class="elements__element">
         <img class="elements__img" src="./images/goraelbrus.jpg" alt="Гора Эльбрус">
         <div class="elements__description">
           <h2 class="elements__title">Гора Эльбрус</h2>
-          <button class="elements__like"></button>
+          <button type="button" class="elements__like"></button>
         </div>
-      </div>
-      <div class="elements__element">
+      </article>
+      <article class="elements__element">
         <img class="elements__img" src="./images/dombay.jpg" alt="Домбай">
         <div class="elements__description">
           <h2 class="elements__title">Домбай</h2>
-          <button class="elements__like elements__like_state_active"></button>
+          <button type="button" class="elements__like elements__like_active"></button>
         </div>
-      </div>
-      <div class="elements__element">
+      </article>
+      <article class="elements__element">
         <img class="elements__img" src="./images/goraelbrus.jpg" alt="Гора Эльбрус">
         <div class="elements__description">
           <h2 class="elements__title">Гора Эльбрус</h2>
-          <button class="elements__like"></button>
+          <button type="button" class="elements__like"></button>
         </div>
-      </div>
-      <div class="elements__element">
+      </article>
+      <article class="elements__element">
         <img class="elements__img" src="./images/dombay.jpg" alt="Домбай">
         <div class="elements__description">
           <h2 class="elements__title">Домбай</h2>
-          <button class="elements__like"></button>
+          <button type="button" class="elements__like"></button>
         </div>
-      </div>
-      <div class="elements__element">
+      </article>
+      <article class="elements__element">
         <img class="elements__img" src="./images/karachaevsk.jpg" alt="Карачаево-Черкесия">
         <div class="elements__description">
           <h2 class="elements__title">Карачаево-Черкесия</h2>
-          <button class="elements__like"></button>
+          <button type="button" class="elements__like"></button>
         </div>
-      </div>
+      </article>
     </section>
-    <footer class="footer">
-      <p class="footer__copyright">© 2021 Mesto Russia </p>
-    </footer>
-  </main>
-  <section class="popup">
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2021 Mesto Russia </p>
+      </footer>
+  <div class="popup">
     <div class="popup__container">
       <button type="button" class="popup__close" aria-label="Закрыть попап"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="popup">
-        <input type="text" class="popup__name" name="name" value="Жак-Ив Кусто" placeholder="Имя" required>
-        <input type="text" class="popup__description" name="profession" value="Исследователь океана" placeholder="Профессия" required>
-        <button class="popup__button-save" type="submit">Сохранить</button>
+      <form class="popup__profile-form" name="popup">
+        <input type="text" class="popup__field popup_field_name" name="name" value="Жак-Ив Кусто" placeholder="Имя" required>
+        <input type="text" class="popup__field popup_field_description" name="description" value="Исследователь океана" placeholder="Профессия" required>
+        <button type="submit" class="popup__button-save">Сохранить</button>
       </form>
     </div>
-  </section>
+  </div>
   <script src="script/main.js"></script>
 </body>
 </html>
