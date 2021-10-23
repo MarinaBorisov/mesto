@@ -34,8 +34,8 @@ const popupImg = document.querySelector('.popup_type_img');
 const popupProfileOpenButton = document.querySelector('.profile__edit');
 const popupPlaceOpenButton = document.querySelector('.profile__add');
 
-const popupProfileCloseButton = document.querySelector('.popup__close_type_profile');
-const popupPlaceCloseButton = document.querySelector('.popup__close_type_place');
+const popupProfileCloseButton = popupProfile.querySelector('.popup__close');
+const popupPlaceCloseButton = popupPlace.querySelector('.popup__close');
 
 const formProfileElement = document.querySelector('.popup__form_type_profile');
 const formPlaceElement = document.querySelector('.popup__form_type_place');
