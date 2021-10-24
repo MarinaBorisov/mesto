@@ -37,7 +37,7 @@ function closePopup(popup) {
 }
 
 /*Declare handlers for profile*/
-function popupProfileOpen() {
+function openEditProfilePopup() {
   const userName = profileName.textContent.trim();
   const userSubtitle = profileSubtitle.textContent.trim();
   nameInput.value = userName;
@@ -45,28 +45,28 @@ function popupProfileOpen() {
   openPopup(popupProfile);
 }
 
-function popupProfileClose() {
+function closeEditProfilePopup() {
   closePopup(popupProfile);
 }
 
-function profileFormSubmit(evnt) {
+function submitEditProfilePopup(evnt) {
   evnt.preventDefault();
   profileName.textContent = nameInput.value;
   profileSubtitle.textContent = descriptionInput.value;
-  popupProfileClose();
+  closeEditProfilePopup();
 }
 
 /*Add listeners for profile*/
-formProfileElement.addEventListener('submit', profileFormSubmit);
-popupProfileOpenButton.addEventListener('click', popupProfileOpen);
-popupProfileCloseButton.addEventListener('click', popupProfileClose);
+formProfileElement.addEventListener('submit', submitEditProfilePopup);
+popupProfileOpenButton.addEventListener('click', openEditProfilePopup);
+popupProfileCloseButton.addEventListener('click', closeEditProfilePopup);
 
 /*Declare handlers for place*/
-function popupPlaceOpen() {
+function openAddCardPopup() {
   openPopup(popupPlace);
 }
 
-function popupPlaceClose() {
+function closeAddCardPopup() {
   closePopup(popupPlace);
 }
 
@@ -102,13 +102,13 @@ function addCard(name, src) {
 function submitPlaceForm(evnt) {
   evnt.preventDefault();
   addCard(placeNameInput.value, placeLinkInput.value);
-  popupPlaceClose();
+  closeAddCardPopup();
 }
 
 /*Add listeners for place*/
 formPlaceElement.addEventListener('submit', submitPlaceForm);
-popupPlaceOpenButton.addEventListener('click', popupPlaceOpen);
-popupPlaceCloseButton.addEventListener('click', popupPlaceClose);
+popupPlaceOpenButton.addEventListener('click', openAddCardPopup);
+popupPlaceCloseButton.addEventListener('click', closeAddCardPopup);
 
 
 /*Article generation from array */
