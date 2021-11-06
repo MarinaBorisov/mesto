@@ -17,6 +17,13 @@
   cursor: pointer;
 }
 
+.popup__button-save:disabled {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  cursor: default;
+}
+
 @media (max-width: 766px) {
   .popup__button-save {
     width: 238px;

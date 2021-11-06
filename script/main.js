@@ -2,6 +2,7 @@
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupPlace = document.querySelector('.popup_type_place');
 const popupImg = document.querySelector('.popup_type_img');
+const popupOverlays =  Array.from(document.querySelectorAll('.popup'));
 const popupImgPicture = popupImg.querySelector('.popup__img');
 const popupImgDescription = popupImg.querySelector('.popup__caption');
 const popupImgClose = popupImg.querySelector('.popup__close');
@@ -30,9 +31,11 @@ const articleTemplateContent = document.querySelector('.article-template').conte
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', handleEscDown);
 }
 
 function closePopup(popup) {
+  document.removeEventListener('keydown', handleEscDown);
   popup.classList.remove('popup_opened');
 }
 
@@ -43,6 +46,8 @@ function openEditProfilePopup() {
   nameInput.value = userName;
   descriptionInput.value = userSubtitle;
   openPopup(popupProfile);
+  nameInput.dispatchEvent(new Event('input'));
+  descriptionInput.dispatchEvent(new Event('input'));
 }
 
 function closeEditProfilePopup() {
@@ -119,4 +124,31 @@ initialCards.forEach((item) => {
 /*Handle click on popupImgClose button*/
 popupImgClose.addEventListener('click', () => {
   closePopup(popupImg);
+});
+
+/*Handle click on popup overlay*/
+popupOverlays.forEach((popupOverlay) => {
+  popupOverlay.addEventListener('click', (evt) => {
+    if (evt.target == popupOverlay) {
+      closePopup(popupOverlay);
+    }
+  });
+});
+
+/*Handle Esc key down*/
+function handleEscDown(evt) {
+  if (evt.key === 'Escape') {
+    const popupElement = document.querySelector('.popup_opened');
+    closePopup(popupElement);
+  }
+}
+
+/*Initialize form validation*/
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_inactive',
+  inputErrorClass: 'popup__field_type_error',
+  errorClass: 'popup__input-error_active'
 });
