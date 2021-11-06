@@ -108,6 +108,10 @@ function submitPlaceForm(evnt) {
   evnt.preventDefault();
   addCard(placeNameInput.value, placeLinkInput.value);
   closeAddCardPopup();
+  placeNameInput.value = '';
+  placeLinkInput.value = '';
+  const saveButton = formPlaceElement.querySelector('.popup__button-save');
+  saveButton.classList.add('popup__button-save_inactive');
 }
 
 /*Add listeners for place*/
@@ -128,7 +132,7 @@ popupImgClose.addEventListener('click', () => {
 
 /*Handle click on popup overlay*/
 popupOverlays.forEach((popupOverlay) => {
-  popupOverlay.addEventListener('click', (evt) => {
+  popupOverlay.addEventListener('mousedown', (evt) => {
     if (evt.target == popupOverlay) {
       closePopup(popupOverlay);
     }

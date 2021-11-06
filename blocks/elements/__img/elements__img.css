@@ -5,3 +5,7 @@
   display: block;
   object-fit: cover;
 }
+
+.elements__img:hover {
+  cursor: pointer;
+}
