@@ -1,6 +1,7 @@
 export class  FormValidator {
-  constructor(data) {
+  constructor(data, formElement) {
     this._params = data;
+    this._formElement = formElement;
   }
 
 _showInputError (formElement, inputElement, errorMessage, validationParameters) {
@@ -52,12 +53,10 @@ _setEventListeners (formElement, validationParameters) {
 };
 
 enableValidation () {
-  const formList = Array.from(document.querySelectorAll(this._params.formSelector));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-    this._setEventListeners(formElement, this._params);
+  const formElement = document.querySelector(this._formElement);
+  formElement.addEventListener('submit', (evt) => {
+    evt.preventDefault();
   });
+  this._setEventListeners(formElement, this._params);
 }
 }

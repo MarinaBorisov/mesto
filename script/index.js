@@ -161,15 +161,22 @@ function handleEscDown(evt) {
 }
 
 /*Initialize form validation*/
-const formValidator = new FormValidator({
-  formSelector: '.popup__form',
+const formValidatorProfile = new FormValidator({
   inputSelector: '.popup__field',
   submitButtonSelector: '.popup__button-save',
   inactiveButtonClass: 'popup__button-save_inactive',
   inputErrorClass: 'popup__field_type_error',
   errorClass: 'popup__input-error_active'
-});
+}, '.popup__form_type_profile');
+formValidatorProfile.enableValidation();
 
-formValidator.enableValidation();
+const formValidatorPlace = new FormValidator({
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_inactive',
+  inputErrorClass: 'popup__field_type_error',
+  errorClass: 'popup__input-error_active'
+}, '.popup__form_type_place');
+formValidatorPlace.enableValidation();
 
 
