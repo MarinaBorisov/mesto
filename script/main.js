@@ -1,3 +1,5 @@
+import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
 /*Save elements in global variables*/
 const popupProfile = document.querySelector('.popup_type_profile');
 const popupPlace = document.querySelector('.popup_type_place');
@@ -82,6 +84,7 @@ function createCard(name, src) {
   elementsImg.alt = name;
   const elementsTitle = articleClone.querySelector('.elements__title');
   elementsTitle.textContent = name;
+
   const elementsLike = articleClone.querySelector('.elements__like');
   elementsLike.addEventListener('click', (evt) => {
     const likeButton = evt.target;
@@ -101,12 +104,22 @@ function createCard(name, src) {
   return articleClone;
 }
 function addCard(name, src) {
-  elements.prepend(createCard(name, src));
+  const data = {};
+  data.name = name;
+  data.src = src;
+  const card = new Card(data, '.article-template', openPopup);
+  elements.prepend(card.generateCard());
+
 }
 
 function submitPlaceForm(evnt) {
   evnt.preventDefault();
-  addCard(placeNameInput.value, placeLinkInput.value);
+  //addCard(placeNameInput.value, placeLinkInput.value);
+  const data = {};
+  data.name = placeNameInput.value;
+  data.src = placeLinkInput.value;
+  const card = new Card(data, '.article-template', openPopup);
+  elements.prepend(card.generateCard());
   closeAddCardPopup();
   placeNameInput.value = '';
   placeLinkInput.value = '';
@@ -148,7 +161,7 @@ function handleEscDown(evt) {
 }
 
 /*Initialize form validation*/
-enableValidation({
+const formValidator = new FormValidator({
   formSelector: '.popup__form',
   inputSelector: '.popup__field',
   submitButtonSelector: '.popup__button-save',
@@ -156,3 +169,7 @@ enableValidation({
   inputErrorClass: 'popup__field_type_error',
   errorClass: 'popup__input-error_active'
 });
+
+formValidator.enableValidation();
+
+
