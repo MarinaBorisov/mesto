@@ -77,32 +77,6 @@ function closeAddCardPopup() {
   closePopup(popupPlace);
 }
 
-function createCard(name, src) {
-  const articleClone = articleTemplateContent.querySelector('.elements__element').cloneNode(true);
-  const elementsImg = articleClone.querySelector('.elements__img');
-  elementsImg.src = src;
-  elementsImg.alt = name;
-  const elementsTitle = articleClone.querySelector('.elements__title');
-  elementsTitle.textContent = name;
-
-  const elementsLike = articleClone.querySelector('.elements__like');
-  elementsLike.addEventListener('click', (evt) => {
-    const likeButton = evt.target;
-    likeButton.classList.toggle('elements__like_active');
-  });
-  const elementsTrash = articleClone.querySelector('.elements__trash');
-  elementsTrash.addEventListener('click', (evt) => {
-    const trashButton = evt.target;
-    trashButton.closest('.elements__element').remove();
-  });
-   elementsImg.addEventListener('click', () => {
-    popupImgPicture.src = src;
-    popupImgPicture.alt = name;
-    popupImgDescription.textContent = name;
-    openPopup(popupImg);
-  });
-  return articleClone;
-}
 function addCard(name, src) {
   const data = {};
   data.name = name;
@@ -114,7 +88,6 @@ function addCard(name, src) {
 
 function submitPlaceForm(evnt) {
   evnt.preventDefault();
-  //addCard(placeNameInput.value, placeLinkInput.value);
   const data = {};
   data.name = placeNameInput.value;
   data.src = placeLinkInput.value;

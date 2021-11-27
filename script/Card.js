@@ -16,23 +16,21 @@ export class Card {
     return cardElement;
   }
 
-  _handleLike(evt) {
-    const likeButton = evt.target;
-    likeButton.classList.toggle('elements__like_active');
+  _handleLike() {
+    this._elementsLike.classList.toggle('elements__like_active');
   }
-  _handleTrash(evt) {
-    const trashButton = evt.target;
-    trashButton.closest('.elements__element').remove();
+  _handleTrash() {
+    this._elementsTrash.closest('.elements__element').remove();
   }
 
   _setEventListeners() {
-    const elementsLike = this._element.querySelector('.elements__like');
-    elementsLike.addEventListener('click', (evt) => {
-      this._handleLike(evt);
+    this._elementsLike = this._element.querySelector('.elements__like');
+    this._elementsLike.addEventListener('click', (evt) => {
+      this._handleLike();
     });
-    const elementsTrash = this._element.querySelector('.elements__trash');
-    elementsTrash.addEventListener('click', (evt) => {
-      this._handleTrash(evt);
+    this._elementsTrash = this._element.querySelector('.elements__trash');
+    this._elementsTrash.addEventListener('click', (evt) => {
+      this._handleTrash();
     });
     const elementsImg = this._element.querySelector('.elements__img');
     elementsImg.addEventListener('click', () => {
