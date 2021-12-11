@@ -1,7 +1,7 @@
-export class Card {
+export default class Card {
   constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
-    this._src = data.src;
+    this._src = data.link;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -34,13 +34,7 @@ export class Card {
     });
     const elementsImg = this._element.querySelector('.elements__img');
     elementsImg.addEventListener('click', () => {
-      const popupImg = document.querySelector('.popup_type_img');
-      const popupImgPicture = popupImg.querySelector('.popup__img');
-      popupImgPicture.src = this._src;
-      popupImgPicture.alt = this._name;
-      const popupImgDescription = popupImg.querySelector('.popup__caption');
-      popupImgDescription.textContent = this._name;
-      this._handleCardClick(popupImg);
+      this._handleCardClick(this._name, this._src);
     });
 
   }

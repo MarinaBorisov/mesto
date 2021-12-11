@@ -1,2 +1,4 @@
 /.vscode/*
 .editconfig
+node_modules
+dist
