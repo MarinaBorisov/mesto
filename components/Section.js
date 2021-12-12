@@ -15,8 +15,5 @@ export default class Section {
         this._renderer(item);
       });
     }
-    else {
-      this._renderer({name: this._items['place-name'], link: this._items['place-link']});
-    }
   }
 }
