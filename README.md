@@ -13,4 +13,4 @@
 
 **Просмотр результата**
 
-* [Ссылка на GitHub Pages](https://marinaborisov.github.io/mesto/)
+* [Ссылка на GitHub Pages](https://marinaborisov.github.io/mesto/) (will work again in the next version)
