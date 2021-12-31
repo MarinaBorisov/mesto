@@ -31,6 +31,7 @@ export default class  FormValidator {
       return !inputElement.validity.valid;
     });
   };
+
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._buttonElement.classList.add(this._params.inactiveButtonClass);
@@ -62,6 +63,11 @@ export default class  FormValidator {
   }
 
   disableSubmitButton() {
-    this._buttonElement.classList.add(this._params.inactiveButtonClass);
+    if (this._hasInvalidInput()) {
+      this._buttonElement.classList.add(this._params.inactiveButtonClass);
+    }
+    else {
+      this._buttonElement.classList.remove(this._params.inactiveButtonClass);
+    }
   }
 }

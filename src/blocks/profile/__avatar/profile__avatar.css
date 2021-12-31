@@ -4,12 +4,8 @@
   border-radius: 50%;
   margin-right: 30px;
   object-fit: cover;
-}
-
-@media (max-width: 900px) {
-  .profile__avatar {
-    margin-left: 27px;
-  }
+  position: relative;
+  transition: opacity 0.3s;
 }
 
 @media (max-width: 766px) {
