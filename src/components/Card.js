@@ -38,6 +38,7 @@ export default class Card {
 
   deleteCard() {
     this._elementsTrash.closest('.elements__element').remove();
+    this._element = null;
   }
 
   _setEventListeners() {

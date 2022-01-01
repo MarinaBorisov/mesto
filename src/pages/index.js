@@ -4,7 +4,8 @@ import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
-import PopupWithForm from '../components/PopupWithForm.js';;
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithConfirm from '../components/PopupWithConfirm.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
@@ -23,8 +24,15 @@ const popupPlaceOpenButton = document.querySelector('.profile__add');
 const userName = document.querySelector('.popup__field_type_name');
 const userDescription = document.querySelector('.popup__field_type_description');
 const userAvatar = document.querySelector('.popup__field_type_avatar-link');
-let cardList;
-let myUserId;
+const cardList = new Section(
+  (item) => {
+    const card = createCard(item);
+    cardList.addItem(card.generateCard());
+  },
+  '.elements'
+);
+
+let myUserId = '';
 
 function handleLikeClick(card, data) {
   const promise = card.isLikedByMe() ? api.dislikeCard(data._id) : api.likeCard(data._id);
@@ -84,13 +92,13 @@ const popupWithUser = new PopupWithForm('.popup_type_profile', (formData) => {
       description: result.about,
       avatar: result.avatar
     });
+    popupWithUser.close();
   })
   .catch((err) => {
     console.log(err);
   })
   .finally(() => {
-    popupWithUser.showLoading(true);
-    popupWithUser.close();
+    popupWithUser.showLoading(false);
   });
 });
 
@@ -107,18 +115,17 @@ const popupWithAvatar = new PopupWithForm('.popup_type_avatar', (formData) => {
   popupWithAvatar.showLoading(true);
   api.setAvatar(formData['avatar-link'])
     .then(data => {
-        userInfo.setUserInfo(data);
+      userInfo.setUserInfo(data);
+      popupWithAvatar.close();
     })
     .catch(err => console.log(err))
     .finally(() => {
       popupWithAvatar.showLoading(false);
-      popupWithAvatar.close();
     });
   });
 
 popupAvatarChangeButton.addEventListener('click', () => {
-  const userData = userInfo.getUserInfo();
-  userAvatar.value = userData.userAvatar;
+  userAvatar.value = '';
   formValidatorAvatar.disableSubmitButton();
   popupWithAvatar.open();
 });
@@ -135,17 +142,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   });
   myUserId = user._id;
 
-  cardList = new Section(
-    {
-      items: cards,
-      renderer: (item) => {
-        const card = createCard(item);
-        cardList.addItem(card.generateCard());
-      }
-    },
-    '.elements'
-  );
-  cardList.renderItems();
+  cardList.renderItems(cards);
 })
 .catch((err) => {
   console.log(err);
@@ -158,11 +155,11 @@ const popupWithPlace = new PopupWithForm('.popup_type_place', (formData) => {
   .then((result) => {
     const card = createCard(result);
     cardList.addItem(card.generateCard());
+    popupWithPlace.close();
   })
   .catch((err) => {console.log(err);})
   .finally(() => {
     popupWithPlace.showLoading(false);
-    popupWithPlace.close();
   });
 
 });
@@ -174,7 +171,7 @@ popupPlaceOpenButton.addEventListener('click', () => {
 popupWithPlace.setEventListeners();
 
 /*Initialize confirmation*/
-const popupWithConfirm = new PopupWithForm('.popup_type_confirm');
+const popupWithConfirm = new PopupWithConfirm('.popup_type_confirm');
 popupWithConfirm.setEventListeners();
 
 /*Initialize form validation*/

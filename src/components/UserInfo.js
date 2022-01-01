@@ -9,7 +9,6 @@ export default class UserInfo {
     return {
       userName: this._userName.textContent.trim(),
       userDescription: this._userDescription.textContent.trim(),
-      userAvatar: this._userAvatar.src
     }
   }
   setUserInfo(data) {
